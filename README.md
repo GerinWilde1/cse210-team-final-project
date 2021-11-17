@@ -6,5 +6,7 @@
 * Arcade
 
 ## Authors
----
+Gerin Wilde
+Jose LeBaron
+Juan Figueroa
 * # TODO: Add your names and emails here

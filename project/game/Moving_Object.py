@@ -1,5 +1,5 @@
 import constants
-import Point
+import Position
 
 class Flying_Object:
     
@@ -7,15 +7,15 @@ class Flying_Object:
         """
             All of the info needed to cary into all the other everything else
         """
-        self.center = Point.Point(0.0,0.0)
-        self.velocity = Point.Velocity(0.0,0.0)
-        self.angle = 0
-        self.rotate = 0
-        self.rotation = 0
+        self.center = Position.Point(0.0,0.0)
+        self.velocity = Position.Velocity(0.0,0.0)
+        # self.angle = 0
+        # self.rotate = 0
+        # self.rotation = 0
         self.alive = True
-        self.rotate += self.rotation
-        if self.rotate == 359:
-            self.rotate = 0.0
+        # self.rotate += self.rotation
+        # if self.rotate == 359:
+        #     self.rotate = 0.0
         
     def advance(self):
         """

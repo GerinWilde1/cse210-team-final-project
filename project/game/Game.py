@@ -8,6 +8,8 @@ import arcade
 import os
 import random
 
+from project.game.Enemys import Big_Boat
+
 
 
 class Game(arcade.Window):
@@ -79,9 +81,20 @@ class Game(arcade.Window):
 
     def create_ships(self):
 
+        self.enemy_ships = Big_Boat()
+
     def check_collisions(self):
 
+        for bullet in self.bullets:
+            for asteroid in self.asteroids:
+                if bullet.alive and asteroid.alive:
+                    too_close = bullet.radius + asteroid.radius
+
     def cleanup_zombies(self):
+         
+        for bullet in self.bullets:
+            if not bullet.alive:
+                self.bullets.remove(bullet)
 
     # def break_apart(self):
 

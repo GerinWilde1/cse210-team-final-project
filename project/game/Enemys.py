@@ -20,7 +20,7 @@ class Enemys(Moving_Object):
         self.velocity.dy = math.sin(math.radians(self.angle)) * self.bspeed
 
 
-class Bis_Boat(Enemys):
+class Big_Boat(Enemys):
 
     def __init__(self):
 

@@ -13,6 +13,7 @@ from project.game.Enemys import Big_Boat
 
 
 class Game(arcade.Window):
+    """All the logic behind the game"""
 
     def __init__(self, width, height):
 
@@ -63,6 +64,7 @@ class Game(arcade.Window):
 
 
     def update(self, delta_time):
+        """Deals with all the updates. things like Movement, Collision, and bullet/ship info"""
 
         self.check_keys()
         self.check_collisions()
@@ -80,17 +82,19 @@ class Game(arcade.Window):
                 self.bullets.remove(bullet)
 
     def create_ships(self):
+        """builds the Big_Boats"""
 
         self.enemy_ships = Big_Boat()
 
     def check_collisions(self):
-
+        """all the information to know if something has been shot"""
         for bullet in self.bullets:
             for asteroid in self.asteroids:
                 if bullet.alive and asteroid.alive:
                     too_close = bullet.radius + asteroid.radius
 
     def cleanup_zombies(self):
+        """removed alive = False things from the game"""
          
         for bullet in self.bullets:
             if not bullet.alive:
@@ -99,9 +103,19 @@ class Game(arcade.Window):
     # def break_apart(self):
 
     def draw_gameover(self):
+        """once player is dead it desplays death message"""
 
     def check_keys(self):
-
+        """
+            This function checks for keys that are being held down.
+            You will need to put your own method calls in here.
+        """
     def on_key_press(self, key: int, modifiers: int):
-
+        """
+            Puts the current key in the set of keys that are being held.
+            You will need to add things here to handle firing the bullet.
+        """
     def on_key_release(self, key: int, modifiers: int):
+        """
+            Removes the current key from the set of held keys.
+        """

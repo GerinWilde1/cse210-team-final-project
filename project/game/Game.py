@@ -53,14 +53,29 @@ class Game(arcade.Window):
 
         
         
-        for asteroid in self.asteroids:
-            asteroid.draw()
+        for enemy in self.enemy_ships:
+            enemy.draw()
             
              
 
 
 
     def update(self, delta_time):
+
+        self.check_keys()
+        self.check_collisions()
+
+        self.ship.advance()
+        self.ship.is_offscreen()
+
+        for bullet in self.bullets:
+            bullet.advance()
+
+        for bullet in self.bullets:
+            bullet.move()
+            bullet.is_offscreen()
+            if bullet.life == 0:
+                self.bullets.remove(bullet)
 
     def create_ships(self):
 

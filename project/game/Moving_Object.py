@@ -25,6 +25,7 @@ class Flying_Object:
         self.center.y += self.velocity.dy
         
     def is_offscreen(self):
+        """Lets the computer know if the item is off screem and needs to be removed"""
         if self.center.x > constants.SCREEN_WIDTH:
             self.center.x = 0.0
         if self.center.y > constants.SCREEN_HEIGHT:

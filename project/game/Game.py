@@ -103,7 +103,7 @@ class Game(arcade.Window):
     # def break_apart(self):
 
     def draw_gameover(self):
-<<<<<<< HEAD
+
         """
 
             Draws game over in the middle of the screen when Ship dies
@@ -189,7 +189,7 @@ class Game(arcade.Window):
         if key in self.held_keys:
 
             self.held_keys.remove(key)
-=======
+
         """once player is dead it desplays death message"""
 
     def check_keys(self):
@@ -206,4 +206,4 @@ class Game(arcade.Window):
         """
             Removes the current key from the set of held keys.
         """
->>>>>>> 6f80237734c72f68ba5a476d9d2d98d21488f27b
+

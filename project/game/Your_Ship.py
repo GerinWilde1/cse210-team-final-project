@@ -2,7 +2,7 @@ import arcade
 import constants
 import Moving_Object
 import Position
-from project.game.Moving_Object import Flying_Object
+from Moving_Object import Flying_Object
 import math
 
 

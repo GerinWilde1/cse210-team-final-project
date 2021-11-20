@@ -88,7 +88,7 @@ class Game(arcade.Window):
     def create_ships(self):
         """builds the Big_Boats"""
 
-        self.enemy_ships = Big_Boat()
+        self.enemy_ship = Big_Boat()
 
     def check_collisions(self):
         """all the information to know if something has been shot"""

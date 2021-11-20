@@ -2,7 +2,7 @@ import arcade
 import constants
 import Moving_Object
 import Position
-from project.game.constants import BIG_BOAT_SPEED
+from project.game.constants import BIG_BOAT_SPEED, SCREEN_WIDTH
 import math
 
 
@@ -27,6 +27,8 @@ class Big_Boat(Enemys):
     def __init__(self):
 
         super().__init__()
+        self.center.y = 0
+        self.center.x = 0
 
     def draw(self):
         """Draws th ebig boat"""

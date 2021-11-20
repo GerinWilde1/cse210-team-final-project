@@ -13,12 +13,12 @@ class Enemys(Flying_Object):
     def __init__(self):
 
         super().__init__()
-        self.point = Position.Point()
-        self.velocity = Position.Velocity()
+        # self.point = Position.Point()
+        # self.velocity = Position.Velocity()
 
         self.bspeed = constants.BIG_BOAT_SPEED
 
-        self.velocity.dy = math.sin(math.radians(self.angle)) * self.bspeed
+        # self.velocity.dy = math.sin(math.radians(self.angle)) * self.bspeed
 
 
 class Big_Boat(Enemys):

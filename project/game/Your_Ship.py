@@ -35,3 +35,28 @@ class Ship(Flying_Object):
         """If the player is hit it sets the players alive to false which will remove the player from the game."""
 
         self.alive = False
+
+
+    
+
+    def turn_right(self):
+
+        """
+
+            When the right button is pressed this moves turns the ship right
+
+        """
+
+        self.angle += self.turn
+
+    
+
+    def turn_left(self):
+
+        """
+
+            When the up button is pressed this turns the ship left
+
+        """
+
+        self.angle -= self.turn

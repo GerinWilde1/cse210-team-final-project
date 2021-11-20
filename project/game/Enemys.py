@@ -8,6 +8,7 @@ import math
 
 
 class Enemys(Moving_Object):
+    """Hols all the information for the enemy"""
 
     def __init__(self):
 
@@ -20,22 +21,26 @@ class Enemys(Moving_Object):
         self.velocity.dy = math.sin(math.radians(self.angle)) * self.bspeed
 
 
-class Bis_Boat(Enemys):
+class Big_Boat(Enemys):
+    """Build a Big_Boat on screen"""
 
     def __init__(self):
 
         super().__init__()
 
     def draw(self):
+        """Draws th ebig boat"""
 
         arcade.draw.rectangle(constants.ENEMY_SHIPS_WIDTH, constants.ENEMY_SHIPS_HEIGHT)
 
     def advance(self):
+        """moves the Big_Boats if that's what we want for it to do"""
 
         super().advance()
         super().is_offscreen
 
     def hit (self):
+        """Sets alive to False which will remove the boat from the game"""
 
         self.alive = False
 

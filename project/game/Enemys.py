@@ -33,7 +33,7 @@ class Big_Boat(Enemys):
     def draw(self):
         """Draws th ebig boat"""
 
-        arcade.draw.rectangle(constants.ENEMY_SHIPS_WIDTH, constants.ENEMY_SHIPS_HEIGHT)
+        arcade.draw.rectangle(self.center.x, self.center.y, constants.ENEMY_SHIPS_WIDTH, constants.ENEMY_SHIPS_HEIGHT, arcade.color.AERO_BLUE)
 
     def advance(self):
         """moves the Big_Boats if that's what we want for it to do"""

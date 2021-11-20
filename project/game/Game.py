@@ -7,8 +7,7 @@ import math
 import arcade
 import os
 import random
-
-from project.game.Enemys import Big_Boat
+from Enemys import Big_Boat
 
 
 
@@ -27,7 +26,7 @@ class Game(arcade.Window):
         self.ship = Your_Ship.Ship()
         self.bullets = []
         self.enemy_ships = []
-
+        self.shipcount = constants.INITIAL_SHIP_COUNT
 
 
 
@@ -66,8 +65,8 @@ class Game(arcade.Window):
     def update(self, delta_time):
         """Deals with all the updates. things like Movement, Collision, and bullet/ship info"""
 
-        self.check_keys()
-        self.check_collisions()
+        # self.check_keys()
+        # self.check_collisions()
 
         self.ship.advance()
         self.ship.is_offscreen()
@@ -80,6 +79,11 @@ class Game(arcade.Window):
             bullet.is_offscreen()
             if bullet.life == 0:
                 self.bullets.remove(bullet)
+        
+        
+        if self.shipcount != 0:
+            self.create_ships()
+            self.shipcount -= 1
 
     def create_ships(self):
         """builds the Big_Boats"""
@@ -102,108 +106,26 @@ class Game(arcade.Window):
 
     # def break_apart(self):
 
-    def draw_gameover(self):
+    # def draw_gameover(self):
+    #     """once player is dead it desplays death message"""
 
-        """
+    # def check_keys(self):
+    #     """
+    #         This function checks for keys that are being held down.
+    #         You will need to put your own method calls in here.
+    #     """
+    # def on_key_press(self, key: int, modifiers: int):
+    #     """
+    #         Puts the current key in the set of keys that are being held.
+    #         You will need to add things here to handle firing the bullet.
+    #     """
+    # def on_key_release(self, key: int, modifiers: int):
+    #     """
+    #         Removes the current key from the set of held keys.
+    #     """
 
-            Draws game over in the middle of the screen when Ship dies
-
-        """
-
-        text = "GAME OVER"
-
-        start_x = 90
-
-        start_y = 275
-
-        arcade.draw_text(text, start_x=start_x, start_y=start_y, font_size=100,color=arcade.color.RED)
-
-    def check_keys(self):
-        """
-
-            This function checks for keys that are being held down.
-
-            You will need to put your own method calls in here.
-
-        """
-
-        
-
-        if arcade.key.LEFT in self.held_keys:
-
-            self.ship.turn_left()
+c = constants
 
 
-
-        if arcade.key.RIGHT in self.held_keys:
-
-            self.ship.turn_right()
-
-
-
-        if arcade.key.UP in self.held_keys:
-
-            self.ship.speed_up()
-
-
-
-        if arcade.key.DOWN in self.held_keys:
-
-            self.ship.slow_down()
-
-
-
-        # Machine gun mode...
-
-        if arcade.key.SPACE in self.held_keys:
-
-            #bullet = Bullet(self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy, self.ship.angle)
-
-            #self.bullets.append(bullet)
-
-            pass
-
-
-    def on_key_press(self, key: int, modifiers: int):
-  
-        if self.ship.alive:
-
-            self.held_keys.add(key)
-
-            if key == arcade.key.SPACE:
-
-                bullet = Bullet(self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy, self.ship.angle)
-
-                self.bullets.append(bullet)
-
-                # TODO: move the bullet here!
-
-                #self.bullet.move()
-
-    def on_key_release(self, key: int, modifiers: int):
-        """
-
-            Removes the current key from the set of held keys.
-
-        """
-        if key in self.held_keys:
-
-            self.held_keys.remove(key)
-
-        """once player is dead it desplays death message"""
-
-    def check_keys(self):
-        """
-            This function checks for keys that are being held down.
-            You will need to put your own method calls in here.
-        """
-    def on_key_press(self, key: int, modifiers: int):
-        """
-            Puts the current key in the set of keys that are being held.
-            You will need to add things here to handle firing the bullet.
-        """
-    def on_key_release(self, key: int, modifiers: int):
-        """
-            Removes the current key from the set of held keys.
-        """
-
+window = Game(c.SCREEN_WIDTH, c.SCREEN_HEIGHT)
+arcade.run()

@@ -17,7 +17,7 @@ class Ship(Flying_Object):
 
     def draw(self):
         """Draws the Player's ship in the corner"""
-        arcade.draw_rectangle_filled(constants.SHIP_WIDTH, constants.SHIP_HEIGHT)
+        arcade.draw_rectangle_filled(self.center.x, self.center.y, constants.SHIP_WIDTH, constants.SHIP_HEIGHT, arcade.color.RED)
 
     def move_right(self):
         """Movers the player's ship right"""

@@ -35,6 +35,6 @@ class Bullet(Flying_Object):
         all the bullets trig info so it knows how to set it in a straight line
         """
         
-        self.center.x += constants.BULLET_SPEED
-        self.center.y += constants.BULLET_SPEED
+        self.center.dx += constants.BULLET_SPEED
+        self.center.dy += constants.BULLET_SPEED
         self.life -= 1

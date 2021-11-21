@@ -10,3 +10,4 @@ Gerin Wilde
 Jose LeBaron
 Juan Figueroa
 * # TODO: Add your names and emails here
+Gerin Wilde gerinw@byui.edu

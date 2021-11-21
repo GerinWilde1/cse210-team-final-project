@@ -8,6 +8,7 @@ import arcade
 import os
 import random
 from Enemys import Big_Boat
+import Bullet
 
 
 
@@ -104,25 +105,49 @@ class Game(arcade.Window):
             if not bullet.alive:
                 self.bullets.remove(bullet)
 
-    # def break_apart(self):
+    #def break_apart(self):
 
-    # def draw_gameover(self):
-    #     """once player is dead it desplays death message"""
+    def draw_gameover(self):
+        """once player is dead it desplays death message"""
+        
+        text = "GAME OVER"
+        start_x = 80
+        start_y = 250
+        arcade.draw_text(text, start_x=start_x, start_y=start_y, font_size=100,color=arcade.color.RED)
 
-    # def check_keys(self):
-    #     """
-    #         This function checks for keys that are being held down.
-    #         You will need to put your own method calls in here.
-    #     """
-    # def on_key_press(self, key: int, modifiers: int):
-    #     """
-    #         Puts the current key in the set of keys that are being held.
-    #         You will need to add things here to handle firing the bullet.
-    #     """
-    # def on_key_release(self, key: int, modifiers: int):
-    #     """
-    #         Removes the current key from the set of held keys.
-    #     """
+    def check_keys(self):
+        """
+            This function checks for keys that are being held down.
+            You will need to put your own method calls in here.
+        """
+
+        if arcade.key.LEFT in self.held_keys:
+            self.ship.move_left()
+
+        if arcade.key.RIGHT in self.held_keys:
+            self.ship.move_right()
+
+
+    def on_key_press(self, key: int, modifiers: int):
+        """
+            Puts the current key in the set of keys that are being held.
+            You will need to add things here to handle firing the bullet.
+        """
+        if self.ship.alive:
+            self.held_keys.add(key)
+
+            if key == arcade.key.SPACE:
+                bullet = Bullet(self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy, self.ship.angle)
+                self.bullets.append(bullet)
+
+
+    def on_key_release(self, key: int, modifiers: int):
+        """
+            Removes the current key from the set of held keys.
+        """
+        if key in self.held_keys:
+            self.held_keys.remove(key)
+
 
 c = constants
 

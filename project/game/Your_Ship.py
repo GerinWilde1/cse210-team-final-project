@@ -13,6 +13,7 @@ class Ship(Flying_Object):
         super().__init__()
         self.center.x = constants.SCREEN_WIDTH // 2
         self.center.y = constants.SCREEN_HEIGHT // 2
+        # self.advance = Flying_Object.advance(self)
 
 
     def draw(self):

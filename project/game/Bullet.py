@@ -35,6 +35,6 @@ class Bullet(Flying_Object):
         all the bullets trig info so it knows how to set it in a straight line
         """
         
-        self.center.x += math.cos(math.radians(self.angle)) * constants.BULLET_SPEED
-        self.center.y += math.sin(math.radians(self.angle)) * constants.BULLET_SPEED
+        self.center.x += constants.BULLET_SPEED
+        self.center.y += constants.BULLET_SPEED
         self.life -= 1

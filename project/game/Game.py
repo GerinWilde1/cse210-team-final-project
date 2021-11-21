@@ -137,7 +137,7 @@ class Game(arcade.Window):
             self.held_keys.add(key)
 
             if key == arcade.key.SPACE:
-                bullet = Bullet(self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy, self.ship.angle)
+                bullet = Bullet(self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy)
                 self.bullets.append(bullet)
 
 

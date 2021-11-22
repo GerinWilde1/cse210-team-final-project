@@ -66,8 +66,8 @@ class Game(arcade.Window):
     def update(self, delta_time):
         """Deals with all the updates. things like Movement, Collision, and bullet/ship info"""
 
-        # self.check_keys()
-        # self.check_collisions()
+        self.check_keys()
+        self.check_collisions()
 
         self.ship.advance()
         self.ship.is_offscreen()
@@ -94,9 +94,9 @@ class Game(arcade.Window):
     def check_collisions(self):
         """all the information to know if something has been shot"""
         for bullet in self.bullets:
-            for asteroid in self.asteroids:
-                if bullet.alive and asteroid.alive:
-                    too_close = bullet.radius + asteroid.radius
+            for enemys in self.enemy_ships:
+                if bullet.alive and enemys.alive:
+                    too_close = bullet.radius + enemys.radius
 
     def cleanup_zombies(self):
         """removed alive = False things from the game"""
@@ -137,7 +137,7 @@ class Game(arcade.Window):
             self.held_keys.add(key)
 
             if key == arcade.key.SPACE:
-                bullet = Bullet(self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy)
+                bullet = Bullet.Bullet (self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy)
                 self.bullets.append(bullet)
 
 

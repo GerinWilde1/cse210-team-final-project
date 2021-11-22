@@ -90,13 +90,19 @@ class Game(arcade.Window):
         """builds the Big_Boats"""
 
         self.enemy_ship = Big_Boat()
+        self.enemy_ships.append(self.enemy_ship)
 
     def check_collisions(self):
         """all the information to know if something has been shot"""
         for bullet in self.bullets:
             for enemys in self.enemy_ships:
                 if bullet.alive and enemys.alive:
-                    too_close = bullet.radius + enemys.radius
+                    too_close = bullet.radius + enemys.center.x
+
+                    if abs(bullet.center.x + self.enemy_ship.center.x) < too_close and abs(bullet.center.y + self.enemy_ship.center.y) < too_close:
+                        enemys.hit()
+                        bullet.alive = False
+                        print("hit")
 
     def cleanup_zombies(self):
         """removed alive = False things from the game"""

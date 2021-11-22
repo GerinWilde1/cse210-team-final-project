@@ -4,7 +4,7 @@ from Moving_Object import Flying_Object
 import Position
 from constants import BIG_BOAT_SPEED, SCREEN_WIDTH
 import math
-
+import random
 
 
 class Enemys(Flying_Object):
@@ -27,13 +27,13 @@ class Big_Boat(Enemys):
     def __init__(self):
 
         super().__init__()
-        self.center.y = 0
-        self.center.x = 0
+        self.center.x =random.randint(1, constants.SCREEN_HEIGHT) 
+        self.center.y = random.randint(1, constants.SCREEN_WIDTH)
 
     def draw(self):
         """Draws th ebig boat"""
 
-        arcade.draw.rectangle(self.center.x, self.center.y, constants.ENEMY_SHIPS_WIDTH, constants.ENEMY_SHIPS_HEIGHT, arcade.color.AERO_BLUE)
+        arcade.draw_rectangle_filled(self.center.x, self.center.y, constants.ENEMY_SHIPS_WIDTH, constants.ENEMY_SHIPS_HEIGHT, arcade.color.AERO_BLUE)
 
     def advance(self):
         """moves the Big_Boats if that's what we want for it to do"""

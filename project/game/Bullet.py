@@ -16,7 +16,7 @@ class Bullet(Flying_Object):
         self.radius = constants.BULLET_RADIUS
         self.velocity.dx = velocity_x
         self.velocity.dy = velocity_y
-        self.life =  25
+        self.life =  28
         self.alive = True
     def draw(self):
         """
@@ -33,7 +33,7 @@ class Bullet(Flying_Object):
         """
         all the bullets trig info so it knows how to set it in a straight line
         """
-        
-        self.center.x += constants.BULLET_SPEED
-        self.center.y += constants.BULLET_SPEED
+        if self.alive:
+            # self.center.x += constants.BULLET_SPEED
+            self.center.y += constants.BULLET_SPEED
         self.life -= 1

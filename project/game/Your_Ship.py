@@ -14,6 +14,7 @@ class Ship(Flying_Object):
         self.center.x = constants.SCREEN_WIDTH // 2
         self.center.y = constants.SCREEN_HEIGHT - 550
         self.angle = 0
+        self.gameover_sound = arcade.load_sound(":resources:sounds/gameover4.wav")
         # self.advance = Flying_Object.advance(self)
 
 
@@ -42,7 +43,7 @@ class Ship(Flying_Object):
 
     def hit(self):
         """If the player is hit it sets the players alive to false which will remove the player from the game."""
-
+        arcade.play_sound(self.gameover_sound)
         self.alive = False
 
 

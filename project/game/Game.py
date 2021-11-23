@@ -30,7 +30,8 @@ class Game(arcade.Window):
         self.bullets = []
         self.enemy_ships = []
         self.shipcount = constants.INITIAL_SHIP_COUNT
-
+        self.shoot_sound = arcade.load_sound(":resources:sounds/jump1.wav")
+        self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
 
 
 
@@ -155,6 +156,7 @@ class Game(arcade.Window):
             if key == arcade.key.SPACE:
                 bullet = Bullet.Bullet (self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy)
                 self.bullets.append(bullet)
+                arcade.play_sound(self.shoot_sound)
 
 
     def on_key_release(self, key: int, modifiers: int):

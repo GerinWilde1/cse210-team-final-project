@@ -16,7 +16,7 @@ class Enemys(Flying_Object):
         super().__init__()
         # self.point = Position.Point()
         # self.velocity = Position.Velocity()
-
+        self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
         self.bspeed = constants.BIG_BOAT_SPEED
 
         # self.velocity.dy = math.sin(math.radians(self.angle)) * self.bspeed
@@ -51,7 +51,7 @@ class Big_Boat(Enemys):
 
     def hit (self):
         """Sets alive to False which will remove the boat from the game"""
-
+        arcade.play_sound(self.ship_hit_sound)
         self.alive = False
 
 # class Medium_Boat():

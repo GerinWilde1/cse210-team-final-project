@@ -23,13 +23,13 @@ class Ship(Flying_Object):
     def move_right(self):
         """Movers the player's ship right"""
         if self.center.x + (constants.SHIP_WIDTH/2) <= constants.SCREEN_WIDTH:
-            self.center.x += 1
+            self.center.x += 2
 
 
     def move_left(self):
         """moves the players ship left"""
         if self.center.x - (constants.SHIP_WIDTH/2) >= 0:
-            self.center.x -= 1
+            self.center.x -= 2
 
 
     def hit(self):

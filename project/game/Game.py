@@ -97,7 +97,7 @@ class Game(arcade.Window):
         for bullet in self.bullets:
             for enemys in self.enemy_ships:
                 if bullet.alive and enemys.alive:
-                    too_close = bullet.radius + enemys.center.x
+                    too_close = bullet.radius - self.enemy_ship.radius
 
                     if abs(bullet.center.x - self.enemy_ship.center.x) > too_close and abs(bullet.center.y - self.enemy_ship.center.y) > too_close:
                         enemys.hit()
@@ -112,6 +112,10 @@ class Game(arcade.Window):
         for bullet in self.bullets:
             if not bullet.alive:
                 self.bullets.remove(bullet)
+
+        for enemys in self.enemy_ships:
+            if not enemys.alive:
+                self.enemy_ships.remove(enemys)
 
     #def break_apart(self):
 

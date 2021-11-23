@@ -30,11 +30,17 @@ class Big_Boat(Enemys):
         self.center.x = random.randint(5, constants.SCREEN_WIDTH - 10) 
         self.center.y = random.randint(constants.SCREEN_HEIGHT/2, constants.SCREEN_HEIGHT)
         self.radius = constants.ENEMY_SHIPS_RADIUS
+        self.angle = 0
 
     def draw(self):
         """Draws th ebig boat"""
-
-        arcade.draw_rectangle_filled(self.center.x, self.center.y, constants.ENEMY_SHIPS_WIDTH, constants.ENEMY_SHIPS_HEIGHT, arcade.color.AERO_BLUE)
+        img = ":resources:images/enemies/saw.png"
+        texture = arcade.load_texture(img)
+        angle = self.angle
+        width = (texture.width/2) - 20
+        height = (texture.height/2) - 20
+        alpha = 255
+        arcade.draw_texture_rectangle(self.center.x, self.center.y, width, height, texture, angle, alpha)
 
     def advance(self):
         """moves the Big_Boats if that's what we want for it to do"""

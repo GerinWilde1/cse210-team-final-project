@@ -16,6 +16,7 @@ class Bullet(Flying_Object):
         self.radius = constants.BULLET_RADIUS
         self.velocity.dx = velocity_x
         self.velocity.dy = velocity_y
+        self.angle = 90
         self.life =  28
         self.alive = True
     def draw(self):
@@ -23,11 +24,11 @@ class Bullet(Flying_Object):
         drawing the bullet
         """
         
-        # img2 = ":resources:images/space_shooter/laserBlue01.png"
-        # texture = arcade.load_texture(img2)
-        # width = texture.width
-        # height =  texture.height
-        arcade.draw_circle_filled(self.center.x, self.center.y, self.radius, arcade.color.WHITE)
+        img2 = ":resources:images/space_shooter/laserBlue01.png"
+        texture = arcade.load_texture(img2)
+        width = texture.width
+        height =  texture.height
+        arcade.draw_texture_rectangle(self.center.x, self.center.y, width, height, texture, self.angle)
         
     def move(self):
         """

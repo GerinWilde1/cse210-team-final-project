@@ -13,23 +13,31 @@ class Ship(Flying_Object):
         super().__init__()
         self.center.x = constants.SCREEN_WIDTH // 2
         self.center.y = constants.SCREEN_HEIGHT - 550
+        self.angle = 0
         # self.advance = Flying_Object.advance(self)
 
 
     def draw(self):
         """Draws the Player's ship in the corner"""
-        arcade.draw_rectangle_filled(self.center.x, self.center.y, constants.SHIP_WIDTH, constants.SHIP_HEIGHT, arcade.color.RED)
+
+        img = ":resources:images/space_shooter/playerShip1_orange.png"
+        texture = arcade.load_texture(img)
+        
+        width = texture.width/2
+        height = texture.height/2
+        alpha = 255
+        arcade.draw_texture_rectangle(self.center.x, self.center.y, width, height, texture, self.angle, alpha)
 
     def move_right(self):
         """Movers the player's ship right"""
         if self.center.x + (constants.SHIP_WIDTH/2) <= constants.SCREEN_WIDTH:
-            self.center.x += 2
+            self.center.x += 5
 
 
     def move_left(self):
         """moves the players ship left"""
         if self.center.x - (constants.SHIP_WIDTH/2) >= 0:
-            self.center.x -= 2
+            self.center.x -= 5
 
 
     def hit(self):

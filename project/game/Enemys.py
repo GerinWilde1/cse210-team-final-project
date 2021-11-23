@@ -1,11 +1,12 @@
 import arcade
-import constants
-from Moving_Object import Flying_Object
-import Position
-from constants import BIG_BOAT_SPEED, SCREEN_WIDTH
+import game.constants
+from game.Moving_Object import Flying_Object
+# import Position
+from game.constants import BIG_BOAT_SPEED, SCREEN_WIDTH
 import math
 import random
 
+constants = game.constants
 
 class Enemys(Flying_Object):
     """Hols all the information for the enemy"""

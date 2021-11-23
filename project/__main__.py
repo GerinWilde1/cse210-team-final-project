@@ -1,10 +1,10 @@
 from game.Game import Game
-import game.constants
+import project.game.constants
 import arcade
 
 
 game = Game()
-c = game.constants
+c = project.game.constants
 
 
 window = Game(c.SCREEN_WIDTH, c.SCREEN_HEIGHT)

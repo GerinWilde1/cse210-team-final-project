@@ -1,9 +1,9 @@
-import constants
-from Moving_Object import Flying_Object
+import game.constants
+from game.Moving_Object import Flying_Object
 import arcade
 import math
 
-
+constants = game.constants
 
 class Bullet(Flying_Object):
     def __init__(self, center_x, center_y, velocity_x, velocity_y):

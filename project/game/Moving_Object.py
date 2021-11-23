@@ -1,6 +1,9 @@
-import constants
-import Position
 
+import game.constants
+import game.Position
+
+Position = game.Position
+constants = game.constants
 class Flying_Object:
     
     def __init__(self):

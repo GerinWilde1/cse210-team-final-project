@@ -1,11 +1,11 @@
 import arcade
-import constants
-import Moving_Object
-import Position
-from Moving_Object import Flying_Object
+import game.constants
+# import Moving_Object
+# import Position
+from game.Moving_Object import Flying_Object
 import math
 
-
+constants = game.constants
 class Ship(Flying_Object):
     """The class for the player's ship"""
     def __init__(self):

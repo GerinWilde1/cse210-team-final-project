@@ -1,17 +1,19 @@
-import constants
-import Position
-import Moving_Object
-import Enemys
-import Your_Ship
-import math
+import game.constants
+# import Position
+# import Moving_Object
+# import Enemys
+import game.Your_Ship
+# import math
 import arcade
-import os
-import random
-from Enemys import Big_Boat
-import Bullet
+# import os
+# import random
+from game.Enemys import Big_Boat
+import game.Bullet
 
 
-
+Bullet = game.Bullet
+Your_Ship = game.Your_Ship
+constants = game.constants
 class Game(arcade.Window):
     """All the logic behind the game"""
 

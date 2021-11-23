@@ -99,10 +99,12 @@ class Game(arcade.Window):
                 if bullet.alive and enemys.alive:
                     too_close = bullet.radius + enemys.center.x
 
-                    if abs(bullet.center.x + self.enemy_ship.center.x) < too_close and abs(bullet.center.y + self.enemy_ship.center.y) < too_close:
+                    if abs(bullet.center.x - self.enemy_ship.center.x) < too_close and abs(bullet.center.y - self.enemy_ship.center.y) < too_close:
                         enemys.hit()
                         bullet.alive = False
                         print("hit")
+
+        self.cleanup_zombies()
 
     def cleanup_zombies(self):
         """removed alive = False things from the game"""

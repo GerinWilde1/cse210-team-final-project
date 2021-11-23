@@ -80,6 +80,8 @@ class Game(arcade.Window):
             bullet.is_offscreen()
             if bullet.life == 0:
                 self.bullets.remove(bullet)
+        for enemy in self.enemy_ships:
+            enemy.is_offscreen()
         
         
         if self.shipcount != 0:
@@ -97,9 +99,9 @@ class Game(arcade.Window):
         for bullet in self.bullets:
             for enemys in self.enemy_ships:
                 if bullet.alive and enemys.alive:
-                    too_close = bullet.radius - enemys.radius
+                    too_close = bullet.radius + enemys.radius
 
-                    if abs(bullet.center.x - self.enemy_ship.center.x) < too_close and abs(bullet.center.y - self.enemy_ship.center.y) < too_close:
+                    if abs(bullet.center.x - enemys.center.x) < too_close and abs(bullet.center.y - enemys.center.y) < too_close:
                         enemys.hit()
                         bullet.alive = False
                         print("hit")

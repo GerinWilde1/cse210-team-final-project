@@ -27,8 +27,8 @@ class Big_Boat(Enemys):
     def __init__(self):
 
         super().__init__()
-        self.center.x =random.randint(1, constants.SCREEN_HEIGHT) 
-        self.center.y = random.randint(1, constants.SCREEN_WIDTH)
+        self.center.x = random.randint(5, constants.SCREEN_WIDTH - 10) 
+        self.center.y = random.randint(constants.SCREEN_HEIGHT/2, constants.SCREEN_HEIGHT)
         self.radius = constants.ENEMY_SHIPS_RADIUS
 
     def draw(self):

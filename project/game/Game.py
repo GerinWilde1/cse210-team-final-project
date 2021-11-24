@@ -14,13 +14,13 @@ import game.Bullet
 Bullet = game.Bullet
 Your_Ship = game.Your_Ship
 constants = game.constants
-class Game(arcade.Window):
+class Game(arcade.View):
     """All the logic behind the game"""
 
     def __init__(self, width, height):
 
 
-        super().__init__(width, height)
+        super().__init__()
         arcade.set_background_color(arcade.color.SMOKY_BLACK)
 
         self.held_keys = set()

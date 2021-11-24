@@ -1,0 +1,33 @@
+import arcade
+import game.Game
+
+
+class InstrustionView(arcade.View):
+
+
+
+    def __init__(self):
+        pass
+
+    def on_show(self):
+        """This id run once we switch to this view"""
+        arcade.set_background_color(arcade)
+        
+        # Reset the viewport, necessaey if we have a scrolling game and we need
+        # to reset the viewport back to the start do we can see what we draw
+        arcade.set_viewport(0, self.window.width, 0, self.window.height)
+
+
+    def on_draw(self):
+        """Draw this View"""
+        arcade.start_render()
+        arcade.draw_text("Instruction Screen", self.window.width / 2, self.window.height / 2, arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75, arcade.color.WHITE, font_size=20, anchor_x="center")
+
+
+    def on_mouse_press(self, _x, _y, _button, _modifiers):
+        
+        game_view = game.Game()
+        game_view.setup()
+        self.window.show_view(game_view)
+

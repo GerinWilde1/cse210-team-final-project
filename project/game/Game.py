@@ -9,11 +9,13 @@ import arcade
 # import random
 from game.Enemys import Big_Boat
 import game.Bullet
+import project.Game_Over
 
-
+Enemy_Bullet = game.Bullet
 Bullet = game.Bullet
 Your_Ship = game.Your_Ship
 constants = game.constants
+gameover = project.Game_Over
 class Game(arcade.View):
     """All the logic behind the game"""
 
@@ -28,6 +30,7 @@ class Game(arcade.View):
 
         self.ship = Your_Ship.Ship()
         self.bullets = []
+        self.enemy_bullets = []
         self.enemy_ships = []
         self.shipcount = constants.INITIAL_SHIP_COUNT
         self.shoot_sound = arcade.load_sound(":resources:sounds/jump1.wav")
@@ -107,7 +110,18 @@ class Game(arcade.View):
                     if abs(bullet.center.x - enemys.center.x) < too_close and abs(bullet.center.y - enemys.center.y) < too_close:
                         enemys.hit()
                         bullet.alive = False
-                        print("hit")
+                        
+
+        for bullet in self.enemy_bullets:
+            if bullet.alive and self.ship:
+                too_close = bullet.radius + self.ship.radius
+
+                if abs(bullet.center.x - self.ship.center.x) < too_close and abs(bullet.center.y - self.ship.center.y) < too_close:
+                    self.ship.hit()
+                    bullet.alive = False
+                    view = gameover
+                    if self.ship.ship_lives == 0:
+                        self.window.show_view(view)
 
         self.cleanup_zombies()
 

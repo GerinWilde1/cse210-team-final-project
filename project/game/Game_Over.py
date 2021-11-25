@@ -1,12 +1,13 @@
 import arcade
 import game.constants
+import game.Game 
 
 class Game_Over(arcade.View):
     """View that get's shown once the game is over"""
     def __init__(self):
         """This is run once the player dies/we switch to this view"""
         super().__init__()
-        self.texture = arcade.load_texture("game_over.png")
+        # self.texture = arcade.load_animated_gif("game.Roll.gif")
 
 
         # Reset the viewport, necessaey if we have a scrolling game and we need
@@ -20,12 +21,14 @@ class Game_Over(arcade.View):
     def on_draw(self):
         """Draw this View"""
         arcade.start_render()
-        arcade.draw_text(self.screen_width, self.screen_height, self.screen_width / 2, self.screen_height / 2)
+        # arcade.texture.draw_sized(self.screen_width, self.screen_height, self.screen_width / 2, self.screen_height / 2)
+        arcade.draw_text("GAME OVER", self.window.width / 2, self.window.height / 2, arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("Click to restart", self.window.width / 2, self.window.height / 2-75, arcade.color.WHITE, font_size=20, anchor_x="center")
 
 
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         
         game_view = game.Game()
-        game_view.setup()
         self.window.show_view(game_view)
+        game_view.setup()

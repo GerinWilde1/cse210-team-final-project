@@ -6,16 +6,16 @@ import game.Your_Ship
 # import math
 import arcade
 # import os
-# import random
+import random
 from game.Enemys import Big_Boat
 import game.Bullet
-import Game_Over
+import game.Game_Over
+import time as t
 
 Enemy_Bullet = game.Bullet
 Bullet = game.Bullet
 Your_Ship = game.Your_Ship
 constants = game.constants
-gameover = Game_Over
 class Game(arcade.View):
     """All the logic behind the game"""
 
@@ -27,7 +27,7 @@ class Game(arcade.View):
 
         self.held_keys = set()
 
-
+        self.shoot_time = random.randint (3, 7)
         self.ship = Your_Ship.Ship()
         self.bullets = []
         self.enemy_bullets = []
@@ -93,6 +93,14 @@ class Game(arcade.View):
         if self.shipcount != 0:
             self.create_ships()
             self.shipcount -= 1
+        
+        for i in range(self.shoot_time):
+            self.shoot_time -= 1
+
+        if self.shoot_time == 0:
+            bullet = Bullet.Bullet (self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy)
+            self.enemy_bullets.append(bullet)
+            arcade.play_sound(self.shoot_sound)
 
     def create_ships(self):
         """builds the Big_Boats"""
@@ -113,13 +121,13 @@ class Game(arcade.View):
                         
 
         for bullet in self.enemy_bullets:
-            if bullet.alive and self.ship:
-                too_close = bullet.radius + self.ship.radius
+            if bullet.alive and self.ship.alive:
+                too_close = bullet.radius - self.ship.radius
 
                 if abs(bullet.center.x - self.ship.center.x) < too_close and abs(bullet.center.y - self.ship.center.y) < too_close:
                     self.ship.hit()
                     bullet.alive = False
-                    view = gameover
+                    view = game.Game_Over.Game_Over()
                     if self.ship.ship_lives == 0:
                         self.window.show_view(view)
 

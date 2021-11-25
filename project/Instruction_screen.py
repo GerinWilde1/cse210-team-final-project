@@ -1,5 +1,5 @@
 import arcade
-import game.Game
+from game.Game import Game
 import game.constants
 
 
@@ -25,7 +25,8 @@ class InstrustionView(arcade.View):
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         
-        game_view = game.Game()
-        game_view.setup()
+        game_view = Game()
         self.window.show_view(game_view)
+        game_view.setup()
+
 

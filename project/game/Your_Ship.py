@@ -15,7 +15,7 @@ class Ship(Flying_Object):
         self.center.y = constants.SCREEN_HEIGHT - 550
         self.angle = 0
         self.gameover_sound = arcade.load_sound(":resources:sounds/gameover4.wav")
-        self.radius = constants.SHIP_RADIUS
+        self.radius = game.constants.SHIP_RADIUS
         # self.advance = Flying_Object.advance(self)
         self.ship_lives = 1
 

@@ -19,7 +19,7 @@ gameover = Game_Over
 class Game(arcade.View):
     """All the logic behind the game"""
 
-    def __init__(self, width, height):
+    def __init__(self):
 
 
         super().__init__()

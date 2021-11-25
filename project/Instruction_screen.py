@@ -1,17 +1,15 @@
 import arcade
 import game.Game
+import game.constants
 
 
 class InstrustionView(arcade.View):
 
 
 
-    def __init__(self):
-        pass
-
     def on_show(self):
         """This id run once we switch to this view"""
-        arcade.set_background_color(arcade)
+        arcade.set_background_color(arcade.csscolor.DARK_SLATE_BLUE)
         
         # Reset the viewport, necessaey if we have a scrolling game and we need
         # to reset the viewport back to the start do we can see what we draw

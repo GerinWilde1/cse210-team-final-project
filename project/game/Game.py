@@ -9,13 +9,13 @@ import arcade
 # import random
 from game.Enemys import Big_Boat
 import game.Bullet
-import project.Game_Over
+import Game_Over
 
 Enemy_Bullet = game.Bullet
 Bullet = game.Bullet
 Your_Ship = game.Your_Ship
 constants = game.constants
-gameover = project.Game_Over
+gameover = Game_Over
 class Game(arcade.View):
     """All the logic behind the game"""
 
@@ -181,8 +181,8 @@ class Game(arcade.View):
             self.held_keys.remove(key)
 
 
-c = constants
+# c = constants
 
 
-window = Game(c.SCREEN_WIDTH, c.SCREEN_HEIGHT)
-arcade.run()
+# window = Game(c.SCREEN_WIDTH, c.SCREEN_HEIGHT)
+# arcade.run()

@@ -1,7 +1,7 @@
 from game.Game import Game
 import game.constants
 import arcade
-from Instruction_screen import InstrustionView
+from Start_screen import StartView
 
 
 
@@ -15,7 +15,7 @@ def main():
     
 
     window = arcade.Window(game.constants.SCREEN_WIDTH, game.constants.SCREEN_HEIGHT, game.constants.SCREEN_TITLE)
-    start_view = InstrustionView()
+    start_view = StartView()
     window.show_view(start_view)
     # start_view.setup()
     arcade.run()

@@ -94,15 +94,17 @@ class Game(arcade.View):
         if self.shipcount != 0:
             self.create_ships()
             self.shipcount -= 1
+    
+    def enemy_shoot(self):
         
         # for i in range(self.shoot_time):
         #     t.sleep(1)
         #     self.shoot_time -= 1
 
         # if self.shoot_time == 0:
-        #     bullet = Enemy_Bullet.Bullet (self.enemy_ship.center.x, self.enemy_ship.center.y)
-        #     self.enemy_bullets.append(bullet)
-        #     arcade.play_sound(self.shoot_sound)
+        bullet = Enemy_Bullet.Bullet (self.enemy_ship.center.x, self.enemy_ship.center.y)
+        self.enemy_bullets.append(bullet)
+        arcade.play_sound(self.shoot_sound)
 
     def create_ships(self):
         """builds the Big_Boats"""

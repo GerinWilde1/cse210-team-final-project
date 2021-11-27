@@ -25,8 +25,8 @@ class Game_Over(arcade.View):
         #sets backbround image
         arcade.draw_texture_rectangle(self.window.width/2, self.window.height/2, self.window.width, self.window.height, self.background)
         #draws text on screen
-        arcade.draw_text("GAME OVER", self.window.width / 2, self.window.height / 2, arcade.color. BLACK, font_size=50, anchor_x="center")
-        arcade.draw_text("Click to restart", self.window.width / 2, self.window.height / 2-75, arcade.color.BLACK, font_size=20, anchor_x="center")
+        arcade.draw_text("GAME OVER", self.window.width / 2, self.window.height / 2, arcade.color.WHITE, font_size=50, anchor_x="center")
+        arcade.draw_text("Click to restart", self.window.width / 2, self.window.height / 2-75, arcade.color.WHITE, font_size=20, anchor_x="center")
 
 
 

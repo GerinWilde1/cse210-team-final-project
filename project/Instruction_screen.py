@@ -22,8 +22,8 @@ class InstrustionView(arcade.View):
         arcade.start_render()
         arcade.draw_texture_rectangle(self.window.width/2, self.window.height/2, self.window.width, self.window.height, self.background)
         # Draws opening words to screen
-        arcade.draw_text("Opening Screen", self.window.width / 2, self.window.height / 2, arcade.color.WHITE, font_size=50, anchor_x="center")
-        arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75, arcade.color.WHITE, font_size=20, anchor_x="center")
+        arcade.draw_text("Opening Screen", self.window.width / 2, self.window.height / 2, arcade.color.DARK_SLATE_BLUE, font_size=50, anchor_x="center")
+        arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75, arcade.color.DARK_SLATE_BLUE, font_size=20, anchor_x="center")
 
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):

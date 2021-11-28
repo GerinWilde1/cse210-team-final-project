@@ -28,7 +28,7 @@ class Game(arcade.View):
 
         self.held_keys = set()
         
-        self.shoot_time = random.randint (3, 7)
+        
         self.ship = Your_Ship.Ship()
         self.bullets = []
         self.enemy_bullets = []
@@ -66,7 +66,18 @@ class Game(arcade.View):
         for enemy in self.enemy_ships:
             enemy.draw()
             
-             
+    def enemy_shoot(self):
+        self.shoot_time = random.randint (3, 7)
+        # for i in range(self.shoot_time):
+        #     t.sleep(1)
+        #     self.shoot_time -= 1
+
+        # if self.shoot_time == 0:
+        for i in range(self.shoot_time):
+            
+            bullet = Enemy_Bullet.Bullet (self.enemy_ship.center.x, self.enemy_ship.center.y)
+            self.enemy_bullets.append(bullet)
+            arcade.play_sound(self.shoot_sound)
 
 
 
@@ -94,17 +105,10 @@ class Game(arcade.View):
         if self.shipcount != 0:
             self.create_ships()
             self.shipcount -= 1
-    
-    def enemy_shoot(self):
-        
-        # for i in range(self.shoot_time):
-        #     t.sleep(1)
-        #     self.shoot_time -= 1
 
-        # if self.shoot_time == 0:
-        bullet = Enemy_Bullet.Bullet (self.enemy_ship.center.x, self.enemy_ship.center.y)
-        self.enemy_bullets.append(bullet)
-        arcade.play_sound(self.shoot_sound)
+        
+    
+
 
     def create_ships(self):
         """builds the Big_Boats"""

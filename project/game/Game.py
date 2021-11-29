@@ -1,21 +1,18 @@
-import game.constants
+from arcade.window_commands import schedule
+import game.constants as constants
 # import Position
 # import Moving_Object
 # import Enemys
-import game.Your_Ship
+import game.Your_Ship as Your_Ship
 # import math
 import arcade
-# import os
+import game.Enemy_Bullet as Enemy_Bullet
 import random
 from game.Enemys import Big_Boat
-import game.Bullet
+import game.Bullet as Bullet
 import game.Game_Over
 import time as t
 
-Enemy_Bullet = game.Bullet
-Bullet = game.Bullet
-Your_Ship = game.Your_Ship
-constants = game.constants
 
 class Game(arcade.View):
     """All the logic behind the game"""
@@ -66,18 +63,15 @@ class Game(arcade.View):
         for enemy in self.enemy_ships:
             enemy.draw()
             
-    def enemy_shoot(self):
-        self.shoot_time = random.randint (3, 7)
-        # for i in range(self.shoot_time):
-        #     t.sleep(1)
-        #     self.shoot_time -= 1
+    def enemy_shoot(self, delta_time):
+        shoot_time = random.randint (1, 3)
+        if self.enemy_ship.alive:
+            arcade.schedule(Enemy_Bullet, shoot_time)
+            self.enemy_bullets.append(Bullet)
 
-        # if self.shoot_time == 0:
-        for i in range(self.shoot_time):
-            
-            bullet = Enemy_Bullet.Bullet (self.enemy_ship.center.x, self.enemy_ship.center.y)
-            self.enemy_bullets.append(bullet)
-            arcade.play_sound(self.shoot_sound)
+        
+ 
+
 
 
 
@@ -86,6 +80,7 @@ class Game(arcade.View):
 
         self.check_keys()
         self.check_collisions()
+        
 
         self.ship.advance()
         self.ship.is_offscreen()
@@ -106,6 +101,7 @@ class Game(arcade.View):
             self.create_ships()
             self.shipcount -= 1
 
+        
         
     
 
@@ -184,7 +180,7 @@ class Game(arcade.View):
             self.held_keys.add(key)
 
             if key == arcade.key.SPACE:
-                bullet = Bullet.Bullet (self.ship.center.x, self.ship.center.y, self.ship.velocity.dx, self.ship.velocity.dy)
+                bullet = Bullet.Bullet (self.ship.center.x, self.ship.center.y + 5, self.ship.velocity.dx, self.ship.velocity.dy)
                 self.bullets.append(bullet)
                 arcade.play_sound(self.shoot_sound)
 

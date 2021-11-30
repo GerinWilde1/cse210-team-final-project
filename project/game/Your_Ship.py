@@ -1,7 +1,5 @@
 import arcade
 import game.constants
-# import Moving_Object
-# import Position
 from game.Moving_Object import Flying_Object
 import math
 
@@ -16,7 +14,6 @@ class Ship(Flying_Object):
         self.angle = 0
         self.gameover_sound = arcade.load_sound(":resources:sounds/gameover4.wav")
         self.radius = game.constants.SHIP_RADIUS
-        # self.advance = Flying_Object.advance(self)
         self.ship_lives = 1
 
 

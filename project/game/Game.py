@@ -14,6 +14,8 @@ import game.Game_Over
 import time as t
 
 
+
+
 class Game(arcade.View):
     """All the logic behind the game"""
 
@@ -84,15 +86,15 @@ class Game(arcade.View):
 
         self.ship.advance()
         self.ship.is_offscreen()
+        
 
         for bullet in self.bullets:
             bullet.advance()
-
-        for bullet in self.bullets:
             bullet.move()
             bullet.is_offscreen()
-            if bullet.life == 0:
+            if bullet.center.y == 0:
                 self.bullets.remove(bullet)
+
         for enemy in self.enemy_ships:
             enemy.is_offscreen()
         
@@ -101,7 +103,12 @@ class Game(arcade.View):
             self.create_ships()
             self.shipcount -= 1
 
-        
+        for bullet in self.enemy_bullets:
+            bullet.advance()
+            bullet.move()
+            bullet.is_offscreen()
+            if bullet.life == 0:
+                self.enemy_bullets.remove(bullet)
         
     
 

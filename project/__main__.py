@@ -1,4 +1,4 @@
-from game.Game import Game
+
 import game.constants
 import arcade
 from Start_screen import StartView

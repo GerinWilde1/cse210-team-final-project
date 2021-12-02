@@ -6,7 +6,6 @@ import game.constants as c
 class StartView(arcade.View):
 
 
-
     def on_show(self):
         """This id run once we switch to this view"""
         self.background = arcade.load_texture("project/game/black_hole.jpg")
@@ -31,5 +30,11 @@ class StartView(arcade.View):
         game_view = Game()
         self.window.show_view(game_view)
         game_view.setup()
+
+    def set_restart(self):
+        game_view = Game()
+        self.window.show_view(game_view)
+        game_view.setup()
+
 
 

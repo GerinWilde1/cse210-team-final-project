@@ -3,6 +3,7 @@ from game.Game import Game
 import game.constants as c
 
 
+
 class InstrustionView(arcade.View):
 
 
@@ -15,6 +16,9 @@ class InstrustionView(arcade.View):
         # Reset the viewport, necessaey if we have a scrolling game and we need
         # to reset the viewport back to the start do we can see what we draw
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
+
+    def setup(self):
+        pass
 
 
     def on_draw(self):
@@ -31,5 +35,6 @@ class InstrustionView(arcade.View):
         game_view = Game()
         self.window.show_view(game_view)
         game_view.setup()
+
 
 

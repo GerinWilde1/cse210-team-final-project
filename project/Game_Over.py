@@ -4,7 +4,7 @@ import os
 
 class Game_Over(arcade.View):
     """View that get's shown once the game is over"""
-    def __init__(self):
+    def __init__(self, game_view):
         """This is run once the player dies/we switch to this view"""
         super().__init__()
         
@@ -17,6 +17,7 @@ class Game_Over(arcade.View):
         self.screen_width = c.SCREEN_WIDTH
         self.screen_height = c.SHIP_HEIGHT
 
+        
 
     def on_draw(self):
         """Draw this View"""

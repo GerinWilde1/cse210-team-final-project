@@ -94,6 +94,8 @@ class Game(arcade.View):
         for enemy in self.enemy_ships:
             enemy.advance()
             enemy.is_offscreen()
+            if enemy.center.y == constants.SCREEN_HEIGHT:
+                self.enemy_ships.remove(enemy)
         
         
         if self.shipcount != 0:
@@ -107,7 +109,8 @@ class Game(arcade.View):
                 self.enemy_bullets.remove(bullet)
         
     
-
+    def setup(self):
+        pass
 
     def create_ships(self):
         """builds the Big_Boats"""
@@ -134,7 +137,7 @@ class Game(arcade.View):
                 if (abs(enemy.center.x - self.ship.center.x) < too_close and abs(enemy.center.y - self.ship.center.y) < too_close):
                     self.ship.hit()
                     enemy.alive = False
-                    view = Game_Over.Game_Over()
+                    view = Game_Over.Game_Over(self)
                     if self.ship.ship_lives == 0:
                         self.window.show_view(view)
 

@@ -24,7 +24,7 @@ class Ship(Flying_Object):
         texture = arcade.load_texture(img)
         
         width = texture.width/2
-        height = texture.height/2
+        height = (texture.height/2)
         alpha = 255
         arcade.draw_texture_rectangle(self.center.x, self.center.y, width, height, texture, self.angle, alpha)
 

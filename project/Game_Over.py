@@ -1,6 +1,6 @@
 import arcade
-import game.constants
-import game.Game
+import game.constants as c
+import game.Game as Game
 import os
 
 class Game_Over(arcade.View):
@@ -15,8 +15,8 @@ class Game_Over(arcade.View):
         # to reset the viewport back to the start do we can see what we draw
         arcade.set_viewport(0, self.window.width - 1, 0, self.window.height - 1)
 
-        self.screen_width = game.constants.SCREEN_WIDTH
-        self.screen_height = game.constants.SHIP_HEIGHT
+        self.screen_width = c.SCREEN_WIDTH
+        self.screen_height = c.SHIP_HEIGHT
 
 
     def on_draw(self):
@@ -31,7 +31,9 @@ class Game_Over(arcade.View):
 
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
-        """on mouse press start the game over"""
-        game_view = game.Game()
+        """on mouse press sart game"""
+        game_view = Game()
         self.window.show_view(game_view)
         game_view.setup()
+
+

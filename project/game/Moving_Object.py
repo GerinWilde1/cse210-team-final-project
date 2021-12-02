@@ -1,9 +1,6 @@
 
-import game.constants
-import game.Position
-
-Position = game.Position
-constants = game.constants
+import game.constants as constants
+import game.Position as Position
 class Flying_Object:
     
     def __init__(self):
@@ -12,13 +9,9 @@ class Flying_Object:
         """
         self.center = Position.Point(0.0,0.0)
         self.velocity = Position.Velocity(0.0,0.0)
-        # self.angle = 0
-        # self.rotate = 0
-        # self.rotation = 0
+
         self.alive = True
-        # self.rotate += self.rotation
-        # if self.rotate == 359:
-        #     self.rotate = 0.0
+
         
     def advance(self):
         """

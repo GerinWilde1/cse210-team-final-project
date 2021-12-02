@@ -6,6 +6,7 @@ import game.Game
 
 
 
+
 class Enemy_bullet(Bullet):
 
     def __init__(self):

@@ -1,8 +1,5 @@
 from arcade.window_commands import schedule
 import game.constants as constants
-# import Position
-# import Moving_Object
-# import Enemys
 import game.Your_Ship as Your_Ship
 # import math
 import arcade
@@ -10,7 +7,7 @@ import game.Enemy_Bullet as Enemy_Bullet
 import random
 from game.Enemys import Big_Boat
 import game.Bullet as Bullet
-import game.Game_Over
+import Game_Over
 import time as t
 
 
@@ -91,11 +88,11 @@ class Game(arcade.View):
         for bullet in self.bullets:
             bullet.advance()
             bullet.move()
-            bullet.is_offscreen()
             if bullet.center.y == 0:
                 self.bullets.remove(bullet)
 
         for enemy in self.enemy_ships:
+            enemy.advance()
             enemy.is_offscreen()
         
         
@@ -106,8 +103,7 @@ class Game(arcade.View):
         for bullet in self.enemy_bullets:
             bullet.advance()
             bullet.move()
-            bullet.is_offscreen()
-            if bullet.life == 0:
+            if bullet.center.y == constants.SCREEN_HEIGHT:
                 self.enemy_bullets.remove(bullet)
         
     
@@ -131,14 +127,14 @@ class Game(arcade.View):
                         bullet.alive = False
                         
 
-        for bullet in self.enemy_bullets:
-            if bullet.alive and self.ship.alive:
-                too_close = bullet.radius - self.ship.radius
+        for enemy in self.enemy_ships:
+            if enemy.alive and self.ship.alive:
+                too_close = enemy.radius + self.ship.radius
 
-                if abs(bullet.center.x - self.ship.center.x) < too_close and abs(bullet.center.y - self.ship.center.y) < too_close:
+                if (abs(enemy.center.x - self.ship.center.x) < too_close and abs(enemy.center.y - self.ship.center.y) < too_close):
                     self.ship.hit()
-                    bullet.alive = False
-                    view = game.Game_Over.Game_Over()
+                    enemy.alive = False
+                    view = Game_Over.Game_Over()
                     if self.ship.ship_lives == 0:
                         self.window.show_view(view)
 

@@ -31,7 +31,8 @@ class Game_Over(arcade.View):
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         """on mouse press sart game"""
-        # game_view = Game()
-        # self.window.show_view(game_view)
-        # game_view.setup()
+        from game.Game import Game
+        game_view = Game()
+        self.window.show_view(game_view)
+        game_view.setup()
 

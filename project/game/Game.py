@@ -9,7 +9,7 @@ from game.Enemys import Big_Boat
 import game.Bullet as Bullet
 import Game_Over
 import time as t
-
+# from game.Enemy_Spawn import Enemy_Spawn
 
 
 
@@ -23,7 +23,7 @@ class Game(arcade.View):
         arcade.set_background_color(arcade.color.SMOKY_BLACK)
 
         self.held_keys = set()
-        
+        # self.enemy_spawn = Enemy_Spawn(self)
         
         self.ship = Your_Ship.Ship()
         self.bullets = []
@@ -96,7 +96,9 @@ class Game(arcade.View):
             enemy.is_offscreen()
             if enemy.center.y == constants.SCREEN_HEIGHT:
                 self.enemy_ships.remove(enemy)
-        
+                # constants.INITIAL_SHIP_COUNT += 1
+                # self.create_ships()
+
         
         if self.shipcount != 0:
             self.create_ships()
@@ -128,6 +130,8 @@ class Game(arcade.View):
                     if abs(bullet.center.x - enemys.center.x) < too_close and abs(bullet.center.y - enemys.center.y) < too_close:
                         enemys.hit()
                         bullet.alive = False
+                        constants.INITIAL_SHIP_COUNT += 1
+                        self.create_ships()
                         
 
         for enemy in self.enemy_ships:

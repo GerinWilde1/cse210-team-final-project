@@ -6,6 +6,8 @@ from game.constants import BIG_BOAT_SPEED, SCREEN_WIDTH
 import math
 import random
 
+# from game.Enemy_Spawn import Enemy_Spawn
+
 constants = game.constants
 
 class Enemys(Flying_Object):
@@ -18,7 +20,7 @@ class Enemys(Flying_Object):
         # self.velocity = Position.Velocity()
         self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
         self.bspeed = constants.BIG_BOAT_SPEED
-
+        # enemy_spawn = Enemy_Spawn(self)
         # self.velocity.dy = math.sin(math.radians(self.angle)) * self.bspeed
 
 
@@ -29,7 +31,7 @@ class Big_Boat(Enemys):
 
         super().__init__()
         self.center.x = random.randint(5, constants.SCREEN_WIDTH - 10) 
-        self.center.y = random.randint(constants.SCREEN_HEIGHT/2, constants.SCREEN_HEIGHT)
+        self.center.y = constants.SCREEN_HEIGHT
         self.radius = constants.ENEMY_SHIPS_RADIUS
         self.angle = 0
         self.velocity.dy = -2

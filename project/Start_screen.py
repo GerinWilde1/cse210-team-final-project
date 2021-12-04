@@ -22,11 +22,11 @@ class StartView(arcade.View):
         arcade.draw_texture_rectangle(self.window.width/2, self.window.height/2, self.window.width, self.window.height, self.background)
         # Draws opening words to screen
         arcade.draw_text("Opening Screen", self.window.width / 2, self.window.height / 2, arcade.color.DARK_SLATE_BLUE, font_size=50, anchor_x="center")
-        arcade.draw_text("Click to advance", self.window.width / 2, self.window.height / 2-75, arcade.color.DARK_SLATE_BLUE, font_size=20, anchor_x="center")
+        arcade.draw_text("Click to Advance", self.window.width / 2, self.window.height / 2-75, arcade.color.DARK_SLATE_BLUE, font_size=20, anchor_x="center")
 
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
-        """on mouse press sart game"""
+        """on mouse press start game"""
         game_view = Game()
         self.window.show_view(game_view)
         game_view.setup()

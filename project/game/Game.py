@@ -1,4 +1,4 @@
-from arcade.window_commands import schedule
+from arcade.window_commands import schedule, set_background_color
 import game.constants as constants
 import game.Your_Ship as Your_Ship
 # import math
@@ -31,7 +31,7 @@ class Game(arcade.View):
         self.shipcount = constants.INITIAL_SHIP_COUNT
         self.shoot_sound = arcade.load_sound(":resources:sounds/jump1.wav")
         self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
-
+        self.background = None
 
 
     def on_draw(self):
@@ -40,7 +40,7 @@ class Game(arcade.View):
         Called automatically by the arcade framework.
         Handles the responsibility of drawing all elements.
         """
-        
+        self.background = arcade.load_texture("project/game/lunar.jpg")
         # clear the screen to begin drawing
         arcade.start_render()
         

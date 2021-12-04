@@ -7,7 +7,7 @@ constants = game.constants
 class Background():
     """The class for the background"""
     def __init__(self):   
-        self.center = 400
+        self.center = 390
         self.angle = 0
 
 

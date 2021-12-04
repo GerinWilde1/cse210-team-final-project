@@ -1,11 +1,15 @@
 import arcade
-
+import random
 
 
 class Enemy_Spawn:
 
-    def spawn_rate(self):
+    def __init__(self, create_ships):
+        self.create_ships = create_ships()
+        self.spawn_rate = random.randint(0, 3)
+
+    def spawn_rate(self, delta_time):
 
         for enemy in self.enemy_ships:
-            if self.constants.INITIAL_SHIP_COUNT !=0:
+            arcade.schedule(self.create_ships(), self.spawn_rate)
 

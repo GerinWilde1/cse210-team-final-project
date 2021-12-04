@@ -8,7 +8,6 @@ import random
 from game.Enemys import Big_Boat
 import game.Bullet as Bullet
 import Game_Over
-import time as t
 # from game.Enemy_Spawn import Enemy_Spawn
 
 
@@ -23,12 +22,12 @@ class Game(arcade.View):
         arcade.set_background_color(arcade.color.SMOKY_BLACK)
 
         self.held_keys = set()
-        # self.enemy_spawn = Enemy_Spawn(self)
-        
+
         self.ship = Your_Ship.Ship()
         self.bullets = []
         self.enemy_bullets = []
         self.enemy_ships = []
+        
         self.shipcount = constants.INITIAL_SHIP_COUNT
         self.shoot_sound = arcade.load_sound(":resources:sounds/jump1.wav")
         self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
@@ -54,19 +53,19 @@ class Game(arcade.View):
         
         if self.ship.alive:
             self.ship.draw()
-        else:
-            self.draw_gameover()
+        # else:
+        #     self.draw_gameover()
 
         
         
         for enemy in self.enemy_ships:
             enemy.draw()
             
-    def enemy_shoot(self, delta_time):
-        shoot_time = random.randint (1, 3)
-        if self.enemy_ship.alive:
-            arcade.schedule(Enemy_Bullet, shoot_time)
-            self.enemy_bullets.append(Bullet)
+    # def enemy_shoot(self, delta_time):
+    #     shoot_time = random.randint (1, 3)
+    #     if self.enemy_ship.alive:
+    #         arcade.schedule(Enemy_Bullet, shoot_time)
+    #         self.enemy_bullets.append(Bullet)
 
         
  
@@ -79,10 +78,11 @@ class Game(arcade.View):
 
         self.check_keys()
         self.check_collisions()
-        
-
+        # Enemy_Spawn(self)
+        self.spawn_ships
         self.ship.advance()
         self.ship.is_offscreen()
+        
         
 
         for bullet in self.bullets:
@@ -98,17 +98,20 @@ class Game(arcade.View):
                 self.enemy_ships.remove(enemy)
                 # constants.INITIAL_SHIP_COUNT += 1
                 # self.create_ships()
+                # spawn_rate = random.randint(1, 3)
+        
+                # arcade.schedule(self.create_ships(), spawn_rate)
 
         
         if self.shipcount != 0:
             self.create_ships()
             self.shipcount -= 1
 
-        for bullet in self.enemy_bullets:
-            bullet.advance()
-            bullet.move()
-            if bullet.center.y == constants.SCREEN_HEIGHT:
-                self.enemy_bullets.remove(bullet)
+        # for bullet in self.enemy_bullets:
+        #     bullet.advance()
+        #     bullet.move()
+        #     if bullet.center.y == constants.SCREEN_HEIGHT:
+        #         self.enemy_bullets.remove(bullet)
         
     
     def setup(self):
@@ -119,6 +122,13 @@ class Game(arcade.View):
 
         self.enemy_ship = Big_Boat()
         self.enemy_ships.append(self.enemy_ship)
+
+    def spawn_ships(self):
+        spawn_rate = random.randint(1, 3)
+        
+        arcade.schedule(self.create_ships(), random.randint(1, 3))
+
+        
 
     def check_collisions(self):
         """all the information to know if something has been shot"""
@@ -132,6 +142,7 @@ class Game(arcade.View):
                         bullet.alive = False
                         constants.INITIAL_SHIP_COUNT += 1
                         self.create_ships()
+
                         
 
         for enemy in self.enemy_ships:
@@ -158,15 +169,15 @@ class Game(arcade.View):
             if not enemys.alive:
                 self.enemy_ships.remove(enemys)
 
-    #def break_apart(self):
+    # def break_apart(self):
 
-    def draw_gameover(self):
-        """once player is dead it desplays death message"""
+    # def draw_gameover(self):
+    #     """once player is dead it desplays death message"""
         
-        text = "GAME OVER"
-        start_x = 80
-        start_y = 250
-        arcade.draw_text(text, start_x=start_x, start_y=start_y, font_size=100,color=arcade.color.RED)
+    #     text = "GAME OVER"
+    #     start_x = 80
+    #     start_y = 250
+    #     arcade.draw_text(text, start_x=start_x, start_y=start_y, font_size=100,color=arcade.color.RED)
 
     def check_keys(self):
         """

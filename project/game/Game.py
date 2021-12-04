@@ -8,6 +8,8 @@ import random
 from game.Enemys import Big_Boat
 import game.Bullet as Bullet
 import Game_Over
+import game.background as background
+
 # from game.Enemy_Spawn import Enemy_Spawn
 
 
@@ -31,7 +33,7 @@ class Game(arcade.View):
         self.shipcount = constants.INITIAL_SHIP_COUNT
         self.shoot_sound = arcade.load_sound(":resources:sounds/jump1.wav")
         self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
-        self.background = None
+        self.background = background.Background()
 
 
     def on_draw(self):
@@ -40,21 +42,21 @@ class Game(arcade.View):
         Called automatically by the arcade framework.
         Handles the responsibility of drawing all elements.
         """
-        self.background = arcade.load_texture("project/game/lunar.jpg")
         # clear the screen to begin drawing
         arcade.start_render()
         
+        if self.ship.alive:
+            self.background.draw()
+            self.ship.draw()
         
-        
+        else:
+             self.draw_gameover()
 
         
         for bullet in self.bullets:
             bullet.draw()
         
-        if self.ship.alive:
-            self.ship.draw()
-        # else:
-        #     self.draw_gameover()
+
 
         
         

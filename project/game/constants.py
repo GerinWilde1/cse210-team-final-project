@@ -1,3 +1,5 @@
+import os
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "GAME SCREEN"
@@ -20,3 +22,5 @@ INITIAL_SHIP_COUNT = 5
 
 BULLET_RADIUS = 5
 BULLET_SPEED = 20
+
+PATH = os.path.dirname(os.path.abspath(__file__))

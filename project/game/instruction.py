@@ -1,15 +1,14 @@
 import arcade
-import project.game.constants as c
 import arcade.gui
-import os
+import game.constants as c
 
 class Instruction_View(arcade.View):
 
-    def __init__(self, start_view):
+    def __init__(self, game_view):
 
-        self.start_view = start_view
+        self.game_view = game_view
 
-        self.background = False
+        self.background = arcade.load_texture(c.PATH + "/old_brick_wall.jpg")
 
         self.v_box = arcade.gui.UIBoxLayout()
 
@@ -28,12 +27,21 @@ class Instruction_View(arcade.View):
 
 
     def on_draw(self):
-        return super().on_draw()
+        
+        arcade.start_render()
+        arcade.draw_lrwh_rectangle_textured(0, 0, c.SCREEN_WIDTH, c.SCREEN_HEIGHT, self.background)
 
+
+        arcade.draw_taxt("How to play", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT - 200, arcade.color.WHITE, font_size=40, anchor_x="center")
+        arcade.draw_taxt("Use the right and left arrows to move", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT - 350, arcade.color.WHITE, font_size=16, anchor_x="center")
+        arcade.draw_taxt("Hit the Space bar to shoot", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT - 400, arcade.color.WHITE, font_size=16, anchor_x="center")
+        arcade.draw_taxt("Don't get Hit", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT - 450, arcade.color.WHITE, font_size=16, anchor_x="center")
+
+        self.manager.draw()
 
     def on_click_back_button(self, event):
 
-        self.start_view.setup()
-        self.window.show_view(self.start_view)
+        self.game_view.setup()
+        self.window.show_view(self.game_view)
 
 

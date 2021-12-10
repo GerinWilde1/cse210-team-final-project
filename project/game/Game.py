@@ -1,7 +1,6 @@
 from arcade.window_commands import schedule, set_background_color
 import game.constants as constants
 import game.Your_Ship as Your_Ship
-# import math
 import arcade
 import game.Enemy_Bullet as Enemy_Bullet
 import random
@@ -9,8 +8,6 @@ from game.Enemys import Big_Boat
 import game.Bullet as Bullet
 import Game_Over
 import game.background as background
-
-# from game.Enemy_Spawn import Enemy_Spawn
 
 
 
@@ -171,15 +168,7 @@ class Game(arcade.View):
             if not enemys.alive:
                 self.enemy_ships.remove(enemys)
 
-    # def break_apart(self):
 
-    # def draw_gameover(self):
-    #     """once player is dead it desplays death message"""
-        
-    #     text = "GAME OVER"
-    #     start_x = 80
-    #     start_y = 250
-    #     arcade.draw_text(text, start_x=start_x, start_y=start_y, font_size=100,color=arcade.color.RED)
 
     def check_keys(self):
         """
@@ -215,9 +204,3 @@ class Game(arcade.View):
         if key in self.held_keys:
             self.held_keys.remove(key)
 
-
-# c = constants
-
-
-# window = Game(c.SCREEN_WIDTH, c.SCREEN_HEIGHT)
-# arcade.run()

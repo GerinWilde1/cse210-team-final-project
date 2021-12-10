@@ -50,8 +50,7 @@ class Game(arcade.View):
         
         if self.ship.alive:
             self.background.draw()
-            self.ship.draw()
-        
+            self.ship.draw()   
         else:
              self.draw_gameover()
 
@@ -85,7 +84,6 @@ class Game(arcade.View):
 
         
  
-
 
 
 
@@ -222,4 +220,6 @@ class Game(arcade.View):
         """
         if key in self.held_keys:
             self.held_keys.remove(key)
+    
+
 

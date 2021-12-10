@@ -11,3 +11,4 @@ Jose LeBaron
 Juan Figueroa
 * # TODO: Add your names and emails here
 Gerin Wilde gerinw@byui.edu
+Jose LeBAron Jalbertolebaron@gmail.com

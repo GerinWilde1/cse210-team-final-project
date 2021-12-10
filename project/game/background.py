@@ -21,3 +21,5 @@ class Background():
         height = texture.height*1.8
         alpha = 255
         arcade.draw_texture_rectangle(self.center, self.center, width, height, texture, self.angle, alpha)
+        
+   

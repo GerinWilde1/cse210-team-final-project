@@ -2,12 +2,12 @@ from arcade.window_commands import schedule, set_background_color
 import game.constants as constants
 import game.Your_Ship as Your_Ship
 import arcade
-import game.Enemy_Bullet as Enemy_Bullet
 import random
 from game.Enemys import Big_Boat
 import game.Bullet as Bullet
 import Game_Over
 import game.background as background
+import arcade.gui
 
 
 
@@ -32,6 +32,10 @@ class Game(arcade.View):
         self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
         self.background = background.Background()
 
+        self.score=0
+        
+
+
 
     def on_draw(self):
 
@@ -41,6 +45,8 @@ class Game(arcade.View):
         """
         # clear the screen to begin drawing
         arcade.start_render()
+
+
         
         if self.ship.alive:
             self.background.draw()
@@ -59,6 +65,17 @@ class Game(arcade.View):
         
         for enemy in self.enemy_ships:
             enemy.draw()
+
+        self.draw_score()
+
+    def draw_score(self):
+        """
+        Puts the current score on the screen
+        """
+        score_text = "Score: {}".format(self.score)
+        start_x = 10
+        start_y = constants.SCREEN_HEIGHT - 20
+        arcade.draw_text(score_text, start_x=start_x, start_y=start_y, font_size=12, color=arcade.color.WHITE)
             
     # def enemy_shoot(self, delta_time):
     #     shoot_time = random.randint (1, 3)
@@ -102,9 +119,9 @@ class Game(arcade.View):
                 # arcade.schedule(self.create_ships(), spawn_rate)
 
         
-        if self.shipcount != 0:
-            self.create_ships()
-            self.shipcount -= 1
+        
+        self.create_ships()
+    
 
         # for bullet in self.enemy_bullets:
         #     bullet.advance()
@@ -118,9 +135,10 @@ class Game(arcade.View):
 
     def create_ships(self):
         """builds the Big_Boats"""
-
-        self.enemy_ship = Big_Boat()
-        self.enemy_ships.append(self.enemy_ship)
+        if self.shipcount !=0:
+            self.enemy_ship = Big_Boat()
+            self.enemy_ships.append(self.enemy_ship)
+            self.shipcount -=1
 
     def spawn_ships(self):
         spawn_rate = random.randint(1, 3)
@@ -139,7 +157,8 @@ class Game(arcade.View):
                     if abs(bullet.center.x - enemys.center.x) < too_close and abs(bullet.center.y - enemys.center.y) < too_close:
                         enemys.hit()
                         bullet.alive = False
-                        constants.INITIAL_SHIP_COUNT += 1
+                        self.score += 1
+                        self.shipcount += 2
                         self.create_ships()
 
                         

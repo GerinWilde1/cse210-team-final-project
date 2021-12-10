@@ -27,8 +27,7 @@ class StartView2(arcade.View):
         # Create the buttons
         start_button = arcade.gui.UIFlatButton(text="Start Game", width=200)
         instruction_button = arcade.gui.UIFlatButton(text="Instructions", width=200)
-        quit_button = QuitButton(text="Quit", width=200)
-        # play_button = arcade.gui.UITextureButton(x=0, y=0, texture=arcade.load_texture(c.PATH + '/images/play.png'), texture_hovered=arcade.load_texture(c.PATH + '/images/play_hovered.png'), texture_pressed=arcade.load_texture(constants.PATH + '/images/play_pressed.png'), scale=constants.BUTTON_SCALING)
+        quit_button = arcade.gui.UIFlatButton(text="Quit", width=200)
 
 
         self.v_box.add(start_button.with_space_around(bottom=20))
@@ -36,7 +35,7 @@ class StartView2(arcade.View):
         self.v_box.add(quit_button)
 
         start_button.on_click = self.on_click_start
-        quit_button.on_click = quit_button
+        quit_button.on_click = self.on_click
         instruction_button.on_click = self.on_click_instruction
 
 
@@ -47,7 +46,9 @@ class StartView2(arcade.View):
          )
 
 
-
+    def setup(self):
+        pass
+    
     def on_draw(self):
         
         arcade.start_render()
@@ -64,24 +65,22 @@ class StartView2(arcade.View):
         print("Start: ", event)
     
 
-    def on_click_instruction(self, event: arcade.gui.UIOnClickEvent):
-        instruction_view = InstructionScreen(self)
-        self.window.show_view(instruction_view)
-        # game_view.setup()
+    def on_click_instruction(self, event):
+        view = InstructionScreen(self)
+        self.window.show_view(view)
+
+        print("Instructions:", event)
 
 
 
-class QuitButton(arcade.gui.UIFlatButton):
+
+
     def on_click(self, event: arcade.gui.UIOnClickEvent):
         arcade.exit()
 
 
 
 
-# class InstructionButton(arcade.gui.UIFlatButton):
-#     def on_click(self, event: arcade.gui.UIOnClickEvent):
-#         game_view = InstructionScreen()
-#         self.window.show_view(game_view)
-#         game_view.setup()
+
 
 

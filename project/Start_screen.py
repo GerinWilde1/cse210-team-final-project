@@ -99,7 +99,9 @@ class StartView(arcade.View):
                 anchor_y="center_y",
                 child=self.v_box)
         )
-
+    def setup(self):
+        pass
+    
     def on_click_start(self, event: arcade.gui.UIOnClickEvent):
         
         game_view = Game()

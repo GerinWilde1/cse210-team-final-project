@@ -44,7 +44,8 @@ class StartView2(arcade.View):
          anchor_y='center_y',
          child=self.v_box)
          )
-
+        song = arcade.sound.load_sound("project/game/sound.mp3")
+        arcade.sound.play_sound(song)
 
     def setup(self):
         pass

@@ -30,10 +30,11 @@ class Game(arcade.View):
         self.shipcount = constants.INITIAL_SHIP_COUNT
         self.shoot_sound = arcade.load_sound(":resources:sounds/jump1.wav")
         self.ship_hit_sound = arcade.load_sound(":resources:sounds/explosion1.wav")
+        self.song = arcade.sound.load_sound("project/game/sound.mp3")
         self.background = background.Background()
 
         self.score=0
-        
+
 
 
 
@@ -76,23 +77,12 @@ class Game(arcade.View):
         start_y = constants.SCREEN_HEIGHT - 20
         arcade.draw_text(score_text, start_x=start_x, start_y=start_y, font_size=12, color=arcade.color.WHITE)
             
-    # def enemy_shoot(self, delta_time):
-    #     shoot_time = random.randint (1, 3)
-    #     if self.enemy_ship.alive:
-    #         arcade.schedule(Enemy_Bullet, shoot_time)
-    #         self.enemy_bullets.append(Bullet)
-
-        
- 
-
-
 
     def update(self, delta_time):
         """Deals with all the updates. things like Movement, Collision, and bullet/ship info"""
 
         self.check_keys()
         self.check_collisions()
-        # Enemy_Spawn(self)
         self.spawn_ships
         self.ship.advance()
         self.ship.is_offscreen()
@@ -110,22 +100,9 @@ class Game(arcade.View):
             enemy.is_offscreen()
             if enemy.center.y == constants.SCREEN_HEIGHT:
                 self.enemy_ships.remove(enemy)
-                # constants.INITIAL_SHIP_COUNT += 1
-                # self.create_ships()
-                # spawn_rate = random.randint(1, 3)
-        
-                # arcade.schedule(self.create_ships(), spawn_rate)
 
-        
-        
         self.create_ships()
     
-
-        # for bullet in self.enemy_bullets:
-        #     bullet.advance()
-        #     bullet.move()
-        #     if bullet.center.y == constants.SCREEN_HEIGHT:
-        #         self.enemy_bullets.remove(bullet)
         
     
     def setup(self):
@@ -171,6 +148,7 @@ class Game(arcade.View):
                     view = Game_Over.Game_Over(self)
                     if self.ship.ship_lives == 0:
                         self.window.show_view(view)
+                        # arcade.sound.stop_sound()
 
         self.cleanup_zombies()
 
